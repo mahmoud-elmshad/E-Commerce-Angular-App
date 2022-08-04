@@ -1,0 +1,103 @@
+<!-- <p>register works!</p> -->
+<form [formGroup]="Formgroup" class="m-2" (ngSubmit)="insertuser()">
+
+    <div class="mb-3">
+        <label for="Full Name" class="form-label">Full Name</label>
+        <input type="text" class="form-control" name="Full Name" id="Full Name" formControlName="Fullname">
+        <div class="alert alert-warning" [hidden]="Fullname?.valid || Fullname?.untouched">
+            <small *ngIf="Fullname?.errors?.['required']">
+                Full Name is required
+            </small>
+            <small *ngIf="Fullname?.errors?.['minlength']">
+                Full Name must be at Least 5 Letters
+            </small>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="Email" class="form-label">Email</label>
+        <input type="email" class="form-control" name="Email" id="Email" formControlName="Email">
+        <div class="alert alert-warning" [hidden]="Email?.valid || Email?.untouched">
+            <small *ngIf="Email?.errors?.['required']">
+                Email is required
+            </small>
+            <small *ngIf="Email?.errors?.['email']">
+                Enter valid email
+            </small>
+        </div>
+    </div>
+
+    <div formArrayName="Mobilenumber">
+        <div class="mb-3" *ngFor="let item of Mobilenumber.controls;let i=index">
+            <label for=" Mobile{{i+1}}" class="form-label">Mobile No.{{i+1}}</label>
+            <input type="text" class="form-control" name="Mobile{{i+1}}" id="Mobile{{i+1}}" [formControlName]="i">
+            <!-- <div class="alert alert-warning" [hidden]="Mobilenumber?.valid || Mobilenumber?.untouched">
+                <small *ngIf="Mobilenumber?.errors?.['required']">
+                    Mobile Number is required
+                </small>
+                <small *ngIf="Mobilenumber?.errors?.['minlength']">
+                    Full Name must be at Least 5 Letters
+                </small>
+            </div> -->
+            <br>
+            <div>
+                <button class="btn btn-primary mb-3" (click)="addnumber()"
+                    *ngIf="item.value && i==Mobilenumber.controls.length-1">+</button>
+                <button class="btn btn-primary mb-3" (click)="removenumber()"
+                    *ngIf="item.value && i==Mobilenumber.controls.length-2">-</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div formGroupName="Address">
+        Address:
+        <div class="mb-3 ms-2">
+            <label for="City" class="form-label">City</label>
+            <input type="text" class="form-control" name="City" id="City" formControlName="City">
+        </div>
+        <div class="mb-3 ms-2">
+            <label for="Street" class="form-label">Street</label>
+            <input type="text" class="form-control" name="Street" id="Street" formControlName="Street">
+        </div>
+    </div>
+
+
+    <div class="mb-3">
+        <label for="Password" class="form-label">Password</label>
+        <input type="password" class="form-control" name="Password" id="Password" formControlName="Password"
+            [(ngModel)]="Newuser.Password">
+    </div>
+
+
+    <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
+        <input type="radio" class="btn-check" formControlName="referral" name="referral" id="btnradio1"
+            autocomplete="off" value="anyday" (change)="referralvalidation()">
+        <label class="btn btn-outline-primary" for="btnradio1">Any day</label>
+        <input type="radio" class="btn-check" formControlName="referral" name="referral" id="btnradio2"
+            autocomplete="off" value="specificdays" (change)="referralvalidation()">
+        <label class="btn btn-outline-primary" for="btnradio2">Specific days</label>
+    </div>
+
+    <div class="mb-5" *ngIf="referral?.value =='specificdays'">
+        <label for="">Specific days</label>
+        <input type="text" class="form-control" name="referralspecific" id="referralspecific"
+            formControlName="referralspecific">
+    </div>
+
+    <br>
+    <button type="submit" class="btn btn-success" [disabled]="Formgroup.invalid">Submit</button>
+</form>
+
+<div class="bg-warning">
+    <h3>{{Formgroup.value | json}}</h3>
+    <h3>{{Fullname?.errors | json}}</h3>
+    <h3>{{Email?.errors | json}}</h3>
+    <h3>{{Mobilenumber.errors | json}}</h3>
+    <h3>{{City?.errors | json}}</h3>
+    <h3>{{Street?.errors | json}}</h3>
+    <h3>{{referral?.errors | json}}</h3>
+    <h3>{{this.Formgroup.get('referralspecific')?.errors | json}}</h3>
+    <h3>{{Password?.errors | json}}</h3>
+
+</div>

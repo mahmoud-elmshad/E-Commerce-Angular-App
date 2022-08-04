@@ -1,0 +1,44 @@
+<!-- <p>form works!</p> -->
+<div class="form">
+    <div>
+        <label class="col-form-label" for="ID">ID</label>
+        <input type="text" class="form-control" placeholder="ID" id="ID" [(ngModel)]="Newproduct.id">
+    </div>
+    <div class="form-group">
+        <label class="col-form-label" for="Name">Name</label>
+        <input type="text" class="form-control" placeholder="Name" id="Name" [(ngModel)]="Newproduct.Name">
+    </div>
+    <div class=" form-group">
+        <label class="col-form-label" for="Quantity">Quantity</label>
+        <input type="number" class="form-control" placeholder="Quantity" id="Quantity"
+            [(ngModel)]="Newproduct.Quantity">
+    </div>
+    <div class="form-group">
+        <label class="col-form-label" for="Price">Price</label>
+        <input type="number" class="form-control" placeholder="Price" id="Price" [(ngModel)]="Newproduct.Price">
+    </div>
+    <div class="form-group">
+        <label class="col-form-label" for="Img">Img</label>
+        <input type="text" class="form-control" placeholder="Img" id="Img" [(ngModel)]="Newproduct.Img">
+    </div>
+    <div class="form-group">
+        <label class="col-form-label" for="CateogryID">CateogryID</label>
+        <select class="w-100" name="CateogryID" id="CateogryID" [(ngModel)]="Newproduct.CateogryID">
+            <option *ngFor="let item of Cateogry" [value]="item.id">{{item.Name}}</option>
+        </select>
+    </div>
+    <br>
+    <div>
+        <button type="submit" (click)="addproduct()">
+            Submit
+        </button>
+    </div>
+</div>
+<br><br><br>
+<div>{{Newproduct.id}}</div>
+<div>{{Newproduct.Name}}</div>
+<div>{{Newproduct.Quantity}}</div>
+<div>{{Newproduct.Price}}</div>
+<div>{{Newproduct.Img}}</div>
+<div>{{Newproduct.CateogryID}}</div>
+<!-- <div>{{Newproduct}}</div> -->

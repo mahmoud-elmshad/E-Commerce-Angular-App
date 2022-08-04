@@ -1,0 +1,92 @@
+<!-- <p>orders works!</p> -->
+<div class="">
+    <!-- <img src="../../../assets/wallhaven-rdee2w.jpg" alt="" class="img-fluid w-100"> -->
+    <div class="row">
+        <!-- <div class="col-sm-3">
+            <img src="../../../assets/iti-logo.png" alt="" class="img-fluid">
+        </div> -->
+        <!-- <div class="col-sm-9"> -->
+        <!-- <h2 style="text-align: center;">Store Name: {{Store.Name}}</h2> -->
+        <!-- <div class="row d-flex flex-row">
+            <div class="col-sm-6 d-flex flex-column">
+
+                <div class="mx-auto my-auto" *ngIf="IsMessage">Thanks for purchasing from our Store {{ClientName}}
+                </div>
+
+                <img src="{{Store.Logo}}" alt="" class="img-fluid w-50 mx-auto" *ngIf="IsPurshased">
+
+                <button class="btn btn-primary w-25 mx-auto my-auto" (click)="buy()">Buy</button>
+            </div>
+            <div class="col-sm-6 my-auto">
+                <ul>
+                    <li *ngFor="let item of Store.Branches">
+                        {{item}}
+                    </li>
+                </ul>
+            </div>
+        </div> -->
+        <div class="row">
+            <!-- <div class="w-50 mt-3">
+                    <select class="w-100" name="CateogryID" id="CateogryID" [(ngModel)]="SelectedID">
+                        <option *ngFor="let item of Cateogry" [value]="item.ID">{{item.Name}}</option>
+                    </select>
+                </div> -->
+            <div class="w-50 mt-3">
+                <select class="w-100" name="CateogryID" id="CateogryID" [(ngModel)]="SelectedID">
+                    <option value="0">All</option>
+                    <option *ngFor="let item of Cateogry" [value]="item.id">{{item.Name}}</option>
+                </select>
+                <a class="btn btn-primary mt-3" [routerLink]="['/newproduct']">Add New Product</a>
+            </div>
+            <!-- <app-products class="row" [ReceivedSelectedID]="SelectedID" (Nameincartemit)="Cartname($event)"
+                    (Priceincartemit)="Cartprice($event)" (Countemit)="Cartcount($event)"
+                    (Totalpriceemit)="Carttotalprice($event)"></app-products> -->
+            <div class="row table-responsive">
+                <app-products [ReceivedSelectedID]="SelectedID" (Productemit)="Cartarr($event)"></app-products>
+            </div>
+
+            <!-- <div>
+                    {{ReceivedNameincart}}
+                    {{ReceivedPriceincart}}
+                    {{ReceivedCount}}
+                    {{ReceivedTotalprice}}
+                </div> -->
+            <table class="table mt-3">
+                <thead>
+                    <tr class="bg-dark text-light">
+                        <!-- <th scope="col">No.</th> -->
+                        <th scope="col">Name</th>
+                        <!-- <th scope="col">Image</th> -->
+                        <!-- <th scope="col">Quantity</th> -->
+                        <th scope="col">Price in USD</th>
+                        <!-- <th scope="col">Price in EGY</th> -->
+                        <!-- <td scope="col">Purchase date</td> -->
+                        <td scope="col">Count</td>
+                        <th scope="col">Total Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <ng-container *ngFor="let item of Cartarr; let i=index; trackBy:trackByFunc"> -->
+                    <ng-container *ngFor="let item of ReceivedCartarr; let i=index;">
+                        <tr>
+                            <!-- <td>{{ReceivedNameincart}}</td>
+                            <td>{{ReceivedPriceincart}}</td>
+                            <td>{{ReceivedCount}}</td>
+                            <td>{{ReceivedTotalprice}}</td> -->
+
+                            <td>{{item.Name}}</td>
+                            <td>{{item.Price}}</td>
+                            <td>{{item.Count}}</td>
+                            <td>{{item.Total}}</td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+
+        </div>
+
+        <!-- </div> -->
+
+    </div>
+    <button class="btn btn-primary" (click)="total()">Total</button>
+</div>

@@ -1,0 +1,102 @@
+<!-- <p>products works!</p> -->
+<div>
+    <!-- <img src="../../../assets/wallhaven-rdee2w.jpg" alt="" class="img-fluid w-100"> -->
+    <div class="row">
+        <!-- <div class="col-sm-3">
+            <img src="../../../assets/iti-logo.png" alt="" class="img-fluid">
+        </div> -->
+        <div class="row">
+            <!-- <h2 style="text-align: center;">Store Name: {{Store.Name}}</h2> -->
+            <div class="row d-flex flex-row">
+                <!-- <div class="col-sm-6 d-flex flex-column">
+
+                    <div class="mx-auto my-auto" *ngIf="IsMessage">Thanks for purchasing from our Store {{ClientName}}
+                    </div>
+
+                    <img src="{{Store.Logo}}" alt="" class="img-fluid w-50 mx-auto" *ngIf="IsPurshased">
+
+                    <button class="btn btn-primary w-25 mx-auto my-auto" (click)="buy()">Buy</button>
+                </div> -->
+                <!-- <div class="col-sm-6 my-auto">
+                    <ul>
+                        <li *ngFor="let item of Store.Branches">
+                            {{item}}
+                        </li>
+                    </ul>
+                </div> -->
+            </div>
+            <div class="row">
+                <!-- <div class="w-50 mt-3">
+                    <select class="w-100" name="CateogryID" id="CateogryID" [(ngModel)]="SelectedID">
+                        <option *ngFor="let item of Cateogry" [value]="item.ID">{{item.Name}}</option>
+                    </select>
+                </div> -->
+
+                <table class="table table-responsive mt-3">
+                    <thead>
+                        <tr class="bg-dark text-light">
+                            <th scope="col">No.</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price in USD</th>
+                            <!-- <th scope="col">Price in EGY</th> -->
+                            <!-- <td scope="col">Purchase date</td> -->
+                            <td scope="col">Count</td>
+                            <td scope="col">Details</td>
+                            <td scope="col">Edit</td>
+                            <td scope="col">Delete</td>
+
+                            <th scope="col">Buy</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container class="" *ngFor="let item of SelectedList; let i=index; trackBy:trackByFunc">
+                            <!-- <tr *ngIf="item.CateogryID==SelectedID" -->
+                            <tr [ngStyle]="{'background-color':(item.Quantity==1)?'yellow':'green'}">
+                                <td>{{i+1}}</td>
+                                <td>{{item.Name}}</td>
+                                <td><img src="{{item.Img}}" alt="" appProductCard="red"></td>
+                                <td>{{item.Quantity}}</td>
+                                <td>{{item.Price | currency:'USD':'symbol'}}</td>
+                                <!-- <td>{{Purchasedate | date:'mediumDate'}}</td> -->
+                                <td><input type="number" class="form-control" #Quantityincart></td>
+                                <!-- <td><button class="btn btn-primary" type="button"
+                                        (click)="reduce(item);add(item.Name,item.Price,Quantityincart.value,item)"
+                                        [disabled]="item.Quantity==0">Add to Cart</button></td> -->
+                                <td><button class="btn btn-primary" type="button"
+                                        (click)="detail(item.id)">Details</button></td>
+                                <td><button class="btn btn-primary" type="button" (click)="edit(item.id)">Edit</button>
+                                <td><button class="btn btn-primary" type="button"
+                                        (click)="deletei(item.id,item)">Delete</button>
+                                </td>
+                                <td><button class="btn btn-primary" type="button"
+                                        (click)="add(item.Name,item.Price,Quantityincart.value,item)"
+                                        [disabled]="item.Quantity==0">Cart</button></td>
+                            </tr>
+                        </ng-container>
+                        <!-- <div>{{NationalID|nationalID|date:'mediumDate'}}</div>
+                        <div>{{Card|credit}}</div> -->
+                        <!-- <div>{{Birthdate|date:'shortDate'}}</div> -->
+
+                        <ng-container *ngFor="let item of Productincart; let i=index;">
+                            <tr>
+                                <!-- <td>{{ReceivedNameincart}}</td>
+                            <td>{{ReceivedPriceincart}}</td>
+                            <td>{{ReceivedCount}}</td>
+                            <td>{{ReceivedTotalprice}}</td> -->
+
+                                <!-- <td>{{item.Name}}</td>
+                                <td>{{item.Price}}</td>
+                                <td>{{item.Count}}</td>
+                                <td>{{item.Total}}</td> -->
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>

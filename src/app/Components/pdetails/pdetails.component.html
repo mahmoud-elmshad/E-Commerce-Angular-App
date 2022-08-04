@@ -1,0 +1,24 @@
+<!-- <p>pdetails works!</p> -->
+<div class="container-fluid">
+    <div class="mt-3">
+        <div class="card" style="width: 18rem;">
+            <img [src]="RecivedProduct?.Img" class="card-img-top" alt="...">
+            <!-- <img src="./../../../assets/wallhaven-rdee2w.jpg" class="card-img-top" alt="..."> -->
+            <div class="card-body">
+                <h5 class="card-title">{{RecivedProduct?.Name}}</h5>
+                <p class="card-text">Price: {{RecivedProduct?.Price}}</p>
+                <p class="card-text">Quantity: {{RecivedProduct?.Quantity}}</p>
+                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                <div class="d-flex gap-3">
+                    <button class="btn btn-danger" (click)="prev()"
+                        [disabled]="CurrentID==Productlist[0]">Previous</button>
+                    <button class="btn btn-primary" (click)="back()">Back</button>
+                    <button class="btn btn-warning" (click)="next()"
+                        [disabled]="CurrentID==Productlist[Productlist.length-1]">Next</button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
